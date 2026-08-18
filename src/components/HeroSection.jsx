@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Crown, Gem } from 'lucide-react';
+import { Gem } from 'lucide-react';
 import heroVideo from '../../assets/hero-video.mp4';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -9,42 +9,94 @@ gsap.registerPlugin(ScrollTrigger);
 export function HeroSection() {
   const sectionRef = useRef(null);
   const bgVideoRef = useRef(null);
-  const [scrollPhase, setScrollPhase] = useState(0);
+  const frame0Ref = useRef(null);
+  const frame1Ref = useRef(null);
+  const counterRef = useRef(null);
 
   useEffect(() => {
     const bgVideo = bgVideoRef.current;
     const section = sectionRef.current;
+    const frame0 = frame0Ref.current;
+    const frame1 = frame1Ref.current;
+    const counter = counterRef.current;
+
+    if (!section || !frame0 || !frame1) return;
 
     if (bgVideo) {
       bgVideo.play?.().catch(() => {});
-      bgVideo.style.transform = 'translate3d(0, 0, 0) scale(1.05)';
     }
 
-    const updateScrollPhase = (progress) => {
-      const phase = progress < 0.2 ? 0 : 1;
-      setScrollPhase(phase);
-    };
+    // Set initial GSAP states for GPU acceleration
+    gsap.set(frame0, { opacity: 1, y: 0, scale: 1, pointerEvents: 'auto' });
+    gsap.set(frame1, { opacity: 0, y: 35, scale: 0.95, pointerEvents: 'none' });
 
-    const st = ScrollTrigger.create({
-      trigger: section,
-      start: 'top top',
-      end: '+=1200',
-      scrub: 0.7,
-      pin: true,
-      invalidateOnRefresh: true,
-      onUpdate: (self) => {
-        updateScrollPhase(self.progress);
+    const isMobile = window.innerWidth <= 768;
+    const pinDistance = isMobile ? '+=750' : '+=1000';
 
-        if (bgVideo) {
-          const yOffset = Math.round(self.progress * -60);
-          const scale = 1.05 + self.progress * 0.08;
-          bgVideo.style.transform = `translate3d(0, ${yOffset}px, 0) scale(${scale})`;
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: 'top top',
+          end: pinDistance,
+          scrub: 0.25, // Snappy, crisp, instant scrub (no lag/delay)
+          pin: true,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            if (counter) {
+              const currentNum = self.progress > 0.45 ? '02' : '01';
+              if (counter.innerText !== currentNum) {
+                counter.innerText = currentNum;
+              }
+            }
+          }
         }
+      });
+
+      // Frame 0 ("HAYATI") fades out crisp & clean
+      tl.to(frame0, {
+        opacity: 0,
+        y: -35,
+        scale: 0.95,
+        duration: 0.4,
+        ease: 'power2.inOut',
+        onComplete: () => {
+          if (frame0) frame0.style.pointerEvents = 'none';
+        },
+        onReverseComplete: () => {
+          if (frame0) frame0.style.pointerEvents = 'auto';
+        }
+      }, 0.1);
+
+      // Frame 1 ("UNSEALING THE MONARCH") slides in crisp & sharp
+      tl.to(frame1, {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.4,
+        ease: 'power2.out',
+        onStart: () => {
+          if (frame1) frame1.style.pointerEvents = 'auto';
+        },
+        onReverseComplete: () => {
+          if (frame1) frame1.style.pointerEvents = 'none';
+        }
+      }, 0.45);
+
+      // Background video subtle parallax zoom (hardware accelerated)
+      if (bgVideo) {
+        tl.to(bgVideo, {
+          y: -40,
+          scale: 1.1,
+          duration: 1,
+          ease: 'none'
+        }, 0);
       }
-    });
+    }, section);
 
     return () => {
-      st.kill();
+      ctx.revert();
     };
   }, []);
 
@@ -70,7 +122,8 @@ export function HeroSection() {
       <div className="hero-overlay" />
 
       <div className="hero-content">
-        <div className={`hero-frame ${scrollPhase === 0 ? 'active' : ''}`}>
+        {/* Frame 1: HAYATI */}
+        <div className="hero-frame" ref={frame0Ref}>
           <div className="hero-arabic-crest">عطر حياتي الملكي • دبي</div>
           <div className="hero-forest-badge">
             <span className="badge-dot" />
@@ -85,7 +138,8 @@ export function HeroSection() {
           </div>
         </div>
 
-        <div className={`hero-frame ${scrollPhase === 1 ? 'active' : ''}`}>
+        {/* Frame 2: UNSEALING THE MONARCH */}
+        <div className="hero-frame" ref={frame1Ref}>
           <div className="hero-arabic-crest">فك الختام الملكي</div>
           <div className="hero-forest-badge">
             <span className="badge-dot" />
@@ -98,7 +152,7 @@ export function HeroSection() {
 
       <div className="hero-bottom-bar">
         <div className="hero-counter">
-          <span className="hero-counter-num">0{scrollPhase + 1}</span> / 02
+          <span className="hero-counter-num" ref={counterRef}>01</span> / 02
         </div>
         <div className="hero-scroll-prompt">
           <div className="scroll-prompt-icon">
@@ -110,3 +164,4 @@ export function HeroSection() {
     </section>
   );
 }
+
