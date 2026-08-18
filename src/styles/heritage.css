@@ -221,8 +221,68 @@
 }
 
 @media (max-width: 900px) {
-  .heritage-grid, .alchemist-layout {
+  .heritage-section {
+    padding: 5rem 0;
+  }
+  .heritage-grid {
     grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+  .heritage-card {
+    padding: 2rem;
+  }
+  .alchemist-section {
+    padding: 3rem 0;
+    margin-top: 2rem;
+    border-radius: 16px;
+  }
+  .alchemist-layout {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
     padding: 0 1.5rem;
+  }
+  .alchemist-visualizer {
+    height: 360px;
+  }
+}
+
+@media (max-width: 600px) {
+  .heritage-section {
+    padding: 3.5rem 0;
+  }
+  .heritage-card {
+    padding: 1.5rem 1.2rem;
+    border-radius: 12px;
+  }
+  .heritage-card-title {
+    font-size: 1.6rem;
+  }
+  .heritage-card-text {
+    font-size: 1.05rem;
+  }
+  .alchemist-layout {
+    padding: 0 1rem;
+  }
+  .alchemist-visualizer {
+    height: 300px;
+    border-radius: 14px;
+  }
+  .flask-container {
+    width: 140px;
+    height: 210px;
+  }
+  .alchemist-result-name {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    text-align: center;
+    padding: 0 0.5rem;
+  }
+  .note-options {
+    gap: 0.5rem;
+  }
+  .option-pill {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.75rem;
   }
 }

@@ -248,18 +248,65 @@
 }
 
 @media (max-width: 768px) {
+  .hero-frame {
+    padding: 0 1.2rem;
+  }
+  .hero-forest-badge {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    max-width: 95%;
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
   .hero-main-title {
-    font-size: 2.8rem;
+    font-size: 2.6rem;
     letter-spacing: 6px;
   }
   .hero-arabic-crest {
-    font-size: 3.8rem;
+    font-size: 3.2rem;
   }
   .hero-sub-tagline {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
+    letter-spacing: 1.5px;
+    margin-bottom: 1.5rem;
   }
   .hero-bottom-bar {
-    left: 1.5rem;
-    bottom: 1.5rem;
+    left: 1.2rem;
+    right: 1.2rem;
+    bottom: 1.2rem;
+    gap: 1.5rem;
+    justify-content: space-between;
+  }
+  .hero-scroll-prompt {
+    font-size: 0.65rem;
+    letter-spacing: 1.5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-main-title {
+    font-size: 2.1rem;
+    letter-spacing: 3px;
+  }
+  .hero-arabic-crest {
+    font-size: 2.4rem;
+  }
+  .hero-sub-tagline {
+    font-size: 1rem;
+  }
+  .hero-forest-badge {
+    font-size: 0.6rem;
+    letter-spacing: 1.5px;
+  }
+  .hero-bottom-bar {
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+  }
+  .scroll-prompt-icon {
+    display: none;
   }
 }
