@@ -1,0 +1,380 @@
+/* ==========================================================================
+   ARABIC NIGHT 1-100% SPAN LOADER STYLES
+   CodeGrid Style Luxury Celestial Preloader
+   ========================================================================== */
+
+/* Fullscreen Loader Container */
+.arabic-loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 30%, #0c102b 0%, #050716 70%, #02030a 100%);
+  color: var(--text-main);
+  font-family: var(--font-heading);
+  user-select: none;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s ease;
+}
+
+/* Double Curtain Shutters for Exit Animation */
+.arabic-loader-curtain {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 50.5%;
+  background: radial-gradient(ellipse at 50% 50%, #0c102b 0%, #040614 100%);
+  z-index: 1;
+  transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+  pointer-events: none;
+}
+
+.arabic-loader-curtain.top {
+  top: 0;
+  border-bottom: 1px solid rgba(230, 202, 101, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+}
+
+.arabic-loader-curtain.bottom {
+  bottom: 0;
+  border-top: 1px solid rgba(230, 202, 101, 0.3);
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.8);
+}
+
+/* Shutter Exit Trigger State */
+.arabic-loader-overlay.exiting .arabic-loader-curtain.top {
+  transform: translateY(-100%);
+}
+
+.arabic-loader-overlay.exiting .arabic-loader-curtain.bottom {
+  transform: translateY(100%);
+}
+
+.arabic-loader-overlay.exiting .arabic-loader-content {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Starry Canvas Background */
+.arabic-starry-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+/* Background Mashrabiya Geometric Pattern Overlay */
+.arabic-loader-bg-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  pointer-events: none;
+  background-image: radial-gradient(circle at 50% 50%, transparent 20%, #02030a 90%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath d='M30 0 L34 11 L45 15 L34 19 L30 30 L26 19 L15 15 L26 11 Z M0 30 L11 34 L15 45 L19 34 L30 30 L19 26 L15 15 L11 26 Z' fill='none' stroke='%23E6CA65' stroke-width='0.6' opacity='0.15'/%3E%3C/svg%3E");
+  background-size: 80px 80px;
+}
+
+/* Ambient Radial Gold Nebulae */
+.loader-nebula-glow {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(230, 202, 101, 0.12) 0%, rgba(200, 125, 85, 0.05) 50%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  border-radius: 50%;
+  filter: blur(40px);
+  animation: nebulaPulse 6s ease-in-out infinite alternate;
+}
+
+@keyframes nebulaPulse {
+  0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.6; }
+  100% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.9; }
+}
+
+/* Center Content Container */
+.arabic-loader-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 650px;
+  width: 90%;
+  text-align: center;
+  padding: 40px 30px;
+  background: rgba(8, 11, 26, 0.4);
+  border: 1px solid rgba(230, 202, 101, 0.2);
+  border-radius: 24px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), inset 0 0 30px rgba(230, 202, 101, 0.05);
+}
+
+/* Islamic Horseshoe Arch Header Decoration */
+.arabic-loader-arch-frame {
+  position: absolute;
+  top: -24px;
+  width: 140px;
+  height: 28px;
+  background: var(--bg-surface-dark);
+  border: 1px solid rgba(230, 202, 101, 0.3);
+  border-bottom: none;
+  border-radius: 50px 50px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 -5px 15px rgba(230, 202, 101, 0.15);
+}
+
+.arch-ornament {
+  font-family: var(--font-arabic);
+  color: var(--gold-primary);
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+}
+
+/* Glowing Crescent Moon & Star (Hilal) Emblem */
+.arabic-moon-container {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  margin-top: 10px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arabic-crescent-moon {
+  position: relative;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  box-shadow: inset 16px -4px 0 0 var(--gold-primary), 0 0 25px rgba(230, 202, 101, 0.4);
+  transform: rotate(-25deg);
+  animation: moonFloat 4s ease-in-out infinite alternate;
+}
+
+@keyframes moonFloat {
+  0% { transform: rotate(-25deg) translateY(0); filter: drop-shadow(0 0 10px rgba(230, 202, 101, 0.4)); }
+  100% { transform: rotate(-25deg) translateY(-8px); filter: drop-shadow(0 0 22px rgba(247, 231, 173, 0.7)); }
+}
+
+.arabic-star-ornament {
+  position: absolute;
+  top: 18px;
+  right: 14px;
+  color: var(--gold-light);
+  font-size: 1.4rem;
+  animation: starSpin 8s linear infinite;
+  filter: drop-shadow(0 0 8px rgba(230, 202, 101, 0.8));
+}
+
+@keyframes starSpin {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.15); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+/* Calligraphic Title Header */
+.arabic-loader-header {
+  margin-bottom: 20px;
+}
+
+.arabic-loader-crest-text {
+  font-family: var(--font-arabic);
+  font-size: 1.6rem;
+  color: var(--gold-primary);
+  margin-bottom: 4px;
+  letter-spacing: 1px;
+  text-shadow: 0 0 12px rgba(230, 202, 101, 0.4);
+}
+
+.arabic-loader-sub-crest {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  letter-spacing: 4px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+/* Main 1-100% Span Counter Display */
+.arabic-span-counter-wrapper {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  margin: 15px 0 25px 0;
+  gap: 4px;
+}
+
+.loader-digit-group {
+  display: flex;
+  align-items: center;
+}
+
+/* Stylized Digits and Spans */
+.loader-span-digit {
+  font-family: var(--font-heading);
+  font-size: 5rem;
+  font-weight: 800;
+  line-height: 1;
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  min-width: 0.6em;
+  text-align: center;
+  filter: drop-shadow(0 4px 15px rgba(230, 202, 101, 0.3));
+  transition: transform 0.1s ease;
+}
+
+.loader-span-unit {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--gold-light);
+  margin-left: 4px;
+  opacity: 0.9;
+  text-shadow: 0 0 10px rgba(230, 202, 101, 0.5);
+}
+
+/* 1-100% Span Liquid Progress Bar Container */
+.arabic-progress-bar-container {
+  width: 100%;
+  max-width: 480px;
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.arabic-progress-track {
+  position: relative;
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(230, 202, 101, 0.25);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Span Liquid Progress Fill */
+.loader-span-bar-fill {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #99751C 0%, #E6CA65 60%, #FFF0BA 100%);
+  border-radius: 20px;
+  position: relative;
+  transition: width 0.08s linear;
+  box-shadow: 0 0 15px rgba(230, 202, 101, 0.8);
+}
+
+/* Glowing Sparkle Particle Lead on Progress Bar */
+.loader-span-bar-fill::after {
+  content: '';
+  position: absolute;
+  right: -2px;
+  top: -4px;
+  width: 14px;
+  height: 14px;
+  background: #FFF;
+  border-radius: 50%;
+  box-shadow: 0 0 12px 3px rgba(255, 240, 186, 1), 0 0 20px 6px rgba(230, 202, 101, 0.8);
+}
+
+/* Stage Arabic Text Spans */
+.arabic-milestone-box {
+  min-height: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.arabic-milestone-text-span {
+  font-family: var(--font-arabic);
+  font-size: 1.15rem;
+  color: var(--gold-light);
+  letter-spacing: 0.5px;
+  opacity: 0.95;
+  transition: opacity 0.3s ease;
+  text-shadow: 0 0 8px rgba(230, 202, 101, 0.3);
+}
+
+.english-milestone-text-span {
+  font-family: var(--font-subheading);
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+}
+
+/* Bottom Decorative Corner Accents */
+.arabic-loader-footer {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  opacity: 0.7;
+}
+
+.loader-corner-line {
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+}
+
+.loader-footer-badge {
+  font-family: var(--font-heading);
+  font-size: 0.65rem;
+  letter-spacing: 3px;
+  color: var(--gold-primary);
+  text-transform: uppercase;
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 600px) {
+  .arabic-loader-content {
+    padding: 30px 20px;
+    width: 92%;
+  }
+
+  .loader-span-digit {
+    font-size: 3.8rem;
+  }
+
+  .loader-span-unit {
+    font-size: 1.8rem;
+  }
+
+  .arabic-crescent-moon {
+    width: 55px;
+    height: 55px;
+    box-shadow: inset 13px -3px 0 0 var(--gold-primary), 0 0 20px rgba(230, 202, 101, 0.4);
+  }
+
+  .arabic-star-ornament {
+    font-size: 1.1rem;
+    top: 12px;
+    right: 10px;
+  }
+}

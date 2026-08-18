@@ -1,0 +1,228 @@
+/* ==========================================================================
+   HERITAGE & INTERACTIVE SCENT ALCHEMIST SECTION
+   ========================================================================== */
+
+.heritage-section {
+  position: relative;
+  width: 100%;
+  padding: 8rem 0;
+  background: 
+    radial-gradient(circle at 80% 20%, rgba(200, 125, 85, 0.15) 0%, transparent 60%),
+    radial-gradient(circle at 20% 80%, rgba(13, 44, 39, 0.35) 0%, transparent 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cpath d='M40 0 L45 15 L60 20 L45 25 L40 40 L35 25 L20 20 L35 15 Z M0 40 L15 45 L20 60 L25 45 L40 40 L25 35 L20 20 L15 35 Z' fill='none' stroke='%23E6CA65' stroke-width='0.8' opacity='0.12'/%3E%3C/svg%3E"),
+    var(--bg-obsidian);
+  border-top: 1px solid var(--border-gold);
+}
+
+.heritage-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  margin-bottom: 8rem;
+}
+
+.heritage-card {
+  position: relative;
+  background: linear-gradient(145deg, rgba(18, 20, 30, 0.85) 0%, rgba(6, 7, 11, 0.95) 100%);
+  border: 1px solid var(--border-gold);
+  border-radius: 16px;
+  padding: 3.5rem;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.7), inset 0 0 25px rgba(230, 202, 101, 0.05);
+}
+
+.heritage-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle at 100% 0%, rgba(230, 202, 101, 0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.heritage-card-arabic {
+  border-color: var(--gold-dark);
+}
+
+.heritage-flag-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold-primary);
+  margin-bottom: 1.5rem;
+}
+
+.heritage-card-title {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #FFF;
+}
+
+.heritage-card-text {
+  font-family: var(--font-subheading);
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* ==========================================================================
+   SCENT ALCHEMIST INTERACTIVE MIXER
+   ========================================================================== */
+
+.alchemist-section {
+  position: relative;
+  width: 100%;
+  padding: 6rem 0;
+  background: radial-gradient(circle at 50% 50%, rgba(13, 44, 39, 0.3) 0%, var(--bg-surface-dark) 80%);
+  border: 1px solid var(--border-gold);
+  border-radius: 24px;
+  margin-top: 4rem;
+}
+
+.alchemist-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  padding: 0 4rem;
+}
+
+/* Dynamic Liquid Flask Visualizer */
+.alchemist-visualizer {
+  position: relative;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(6, 7, 11, 0.6);
+  border: 1px solid var(--border-gold);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: inset 0 0 40px rgba(0,0,0,0.8);
+}
+
+.flask-container {
+  position: relative;
+  width: 180px;
+  height: 280px;
+  border: 2px solid var(--gold-primary);
+  border-radius: 90px 90px 40px 40px;
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(230, 202, 101, 0.2);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.flask-cap {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 25px;
+  background: var(--gold-gradient);
+  border-radius: 4px;
+  z-index: 5;
+}
+
+.flask-liquid {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 65%;
+  background: linear-gradient(180deg, rgba(230, 202, 101, 0.9) 0%, rgba(198, 125, 51, 0.95) 100%);
+  transition: background 0.8s ease, height 0.8s ease;
+  overflow: hidden;
+}
+
+/* Bubbles Effect inside Liquid */
+.bubble {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  animation: floatUp 3s infinite ease-in;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(100px) scale(0.5); opacity: 0; }
+  50% { opacity: 0.8; }
+  100% { transform: translateY(-50px) scale(1.2); opacity: 0; }
+}
+
+.alchemist-result-name {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--gold-light);
+  margin-top: 1.5rem;
+  letter-spacing: 2px;
+}
+
+/* Controls Grid */
+.alchemist-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.note-selector-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.group-title {
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.note-options {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.option-pill {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.option-pill:hover {
+  border-color: var(--gold-primary);
+  color: var(--gold-light);
+}
+
+.option-pill.selected {
+  background: var(--gold-gradient);
+  color: var(--bg-obsidian);
+  font-weight: 700;
+  border-color: transparent;
+  box-shadow: 0 0 15px rgba(230, 202, 101, 0.4);
+}
+
+@media (max-width: 900px) {
+  .heritage-grid, .alchemist-layout {
+    grid-template-columns: 1fr;
+    padding: 0 1.5rem;
+  }
+}

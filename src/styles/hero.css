@@ -1,0 +1,265 @@
+/* ==========================================================================
+   HERO SECTION - CINEMATIC FOREST & SCROLLING VIDEO ANIMATION
+   ========================================================================== */
+
+.hero-section {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--bg-obsidian);
+  overflow: hidden;
+}
+
+/* Background Playing Video / Canvas Container */
+.hero-video-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-bg-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transform: translate3d(0, 0, 0) scale(1.05);
+  transition: transform 0.3s ease-out;
+  filter: brightness(0.92) contrast(1.1) saturate(1.25);
+  will-change: transform;
+}
+
+.hero-canvas-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+#hero-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Golden Arabian Desert Vignette & Mashrabiya Overlay */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  pointer-events: none;
+  background: 
+    radial-gradient(circle at 50% 30%, rgba(255, 240, 186, 0.12) 0%, rgba(200, 125, 85, 0.25) 50%, rgba(6, 7, 11, 0.65) 100%),
+    linear-gradient(180deg, rgba(6, 7, 11, 0.3) 0%, transparent 40%, transparent 60%, rgba(6, 7, 11, 0.8) 100%);
+}
+
+/* Dynamic Sunbeam Effect */
+.forest-sunbeam {
+  position: absolute;
+  top: -20%;
+  left: 30%;
+  width: 40%;
+  height: 140%;
+  background: linear-gradient(135deg, rgba(230, 202, 101, 0.18) 0%, rgba(230, 202, 101, 0.02) 70%, transparent 100%);
+  transform: rotate(-25deg);
+  pointer-events: none;
+  z-index: 3;
+  mix-blend-mode: screen;
+  filter: blur(20px);
+  animation: sunbeamPulse 6s infinite ease-in-out alternate;
+}
+
+@keyframes sunbeamPulse {
+  0% { opacity: 0.6; transform: rotate(-25deg) scaleX(1); }
+  100% { opacity: 1; transform: rotate(-22deg) scaleX(1.15); }
+}
+
+/* Hero Content Stacked Overlay Frames */
+.hero-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+
+.hero-frame {
+  position: absolute;
+  text-align: center;
+  max-width: 950px;
+  padding: 0 2rem;
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+  transition: opacity 0.8s ease, transform 0.8s var(--ease-out-expo);
+  pointer-events: none;
+}
+
+.hero-frame.active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* Forest Emerald Crest */
+.hero-forest-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.6rem 1.8rem;
+  background: rgba(13, 44, 39, 0.75);
+  border: 1px solid var(--gold-primary);
+  border-radius: 30px;
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  backdrop-filter: blur(12px);
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 20px rgba(13, 44, 39, 0.8);
+}
+
+.badge-dot {
+  width: 7px;
+  height: 7px;
+  background: var(--gold-primary);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--gold-primary);
+}
+
+.hero-arabic-crest {
+  font-family: var(--font-arabic);
+  font-size: 5.5rem;
+  color: var(--gold-light);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 35px rgba(230, 202, 101, 0.5), 0 0 60px rgba(24, 83, 74, 0.8);
+  letter-spacing: 2px;
+}
+
+.hero-main-title {
+  font-family: var(--font-heading);
+  font-size: 4.8rem;
+  font-weight: 800;
+  letter-spacing: 12px;
+  text-transform: uppercase;
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+  filter: drop-shadow(0 10px 25px rgba(0,0,0,0.9));
+}
+
+.hero-sub-tagline {
+  font-family: var(--font-subheading);
+  font-size: 1.65rem;
+  color: var(--text-main);
+  letter-spacing: 3px;
+  font-weight: 400;
+  margin-bottom: 2rem;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.8);
+}
+
+/* Flying Parallax Nodes (Emerald leaves, Jasmine petals, Golden dust) */
+.flying-elements-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Hero Bottom Control Bar */
+.hero-bottom-bar {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 4rem;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.hero-counter {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  letter-spacing: 2px;
+  color: var(--gold-light);
+}
+
+.hero-counter-num {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #FFF;
+}
+
+.hero-scroll-prompt {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.scroll-prompt-icon {
+  width: 20px;
+  height: 30px;
+  border: 1px solid var(--border-gold);
+  border-radius: 12px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding-top: 5px;
+}
+
+.scroll-prompt-dot {
+  width: 4px;
+  height: 6px;
+  background: var(--gold-primary);
+  border-radius: 2px;
+  animation: mouseWheel 1.5s infinite ease-in-out;
+}
+
+@keyframes mouseWheel {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(12px); opacity: 0; }
+}
+
+@media (max-width: 768px) {
+  .hero-main-title {
+    font-size: 2.8rem;
+    letter-spacing: 6px;
+  }
+  .hero-arabic-crest {
+    font-size: 3.8rem;
+  }
+  .hero-sub-tagline {
+    font-size: 1.2rem;
+  }
+  .hero-bottom-bar {
+    left: 1.5rem;
+    bottom: 1.5rem;
+  }
+}
