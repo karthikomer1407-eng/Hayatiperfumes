@@ -20,8 +20,13 @@ import './styles/footer.css';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function App() {
-  const { isPlaying, toggleAudio } = useAudioSynth();
+  const { isPlaying, toggleAudio, playAudio } = useAudioSynth();
   const [isLoading, setIsLoading] = useState(true);
+
+  const handleLoaderComplete = () => {
+    setIsLoading(false);
+    playAudio();
+  };
 
   useEffect(() => {
     // Lenis Smooth Scroll with GSAP ScrollTrigger sync
@@ -49,7 +54,7 @@ export default function App() {
   return (
     <div className="hayati-app">
       {isLoading && (
-        <ArabicNightLoader onComplete={() => setIsLoading(false)} />
+        <ArabicNightLoader onComplete={handleLoaderComplete} />
       )}
 
       <div className="grain-overlay" />

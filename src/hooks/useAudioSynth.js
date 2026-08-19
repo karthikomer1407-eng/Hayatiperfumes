@@ -89,34 +89,56 @@ export function useAudioSynth() {
     playNext();
   }, []);
 
-  const toggleAudio = useCallback(() => {
+  const playAudio = useCallback(() => {
     const audio = audioRef.current;
+    setIsPlaying(true);
 
-    setIsPlaying((prev) => {
-      const nextState = !prev;
+    if (audio) {
+      const promise = audio.play();
+      if (promise !== undefined) {
+        promise.catch((err) => {
+          console.warn("Autoplay blocked by browser policy, queuing audio start on first interaction:", err);
+          
+          const handleFirstTouch = () => {
+            audio.play().then(() => {
+              setIsPlaying(true);
+            }).catch(() => {
+              startSynthFallback();
+            });
+            window.removeEventListener('pointerdown', handleFirstTouch);
+            window.removeEventListener('click', handleFirstTouch);
+          };
 
-      if (nextState) {
-        if (audio) {
-          audio.play().catch((err) => {
-            console.warn("Audio playback fallback to synth:", err);
-            startSynthFallback();
-          });
-        } else {
-          startSynthFallback();
-        }
-      } else {
-        if (audio) {
-          audio.pause();
-        }
-        if (synthTimerRef.current) clearTimeout(synthTimerRef.current);
-        if (synthCtxRef.current) {
-          synthCtxRef.current.close().catch(() => {});
-          synthCtxRef.current = null;
-        }
+          window.addEventListener('pointerdown', handleFirstTouch, { once: true });
+          window.addEventListener('click', handleFirstTouch, { once: true });
+        });
       }
-      return nextState;
-    });
+    } else {
+      startSynthFallback();
+    }
   }, [startSynthFallback]);
 
-  return { isPlaying, toggleAudio };
+  const pauseAudio = useCallback(() => {
+    const audio = audioRef.current;
+    setIsPlaying(false);
+
+    if (audio) {
+      audio.pause();
+    }
+    if (synthTimerRef.current) clearTimeout(synthTimerRef.current);
+    if (synthCtxRef.current) {
+      synthCtxRef.current.close().catch(() => {});
+      synthCtxRef.current = null;
+    }
+  }, []);
+
+  const toggleAudio = useCallback(() => {
+    if (isPlaying) {
+      pauseAudio();
+    } else {
+      playAudio();
+    }
+  }, [isPlaying, playAudio, pauseAudio]);
+
+  return { isPlaying, toggleAudio, playAudio, pauseAudio };
 }
