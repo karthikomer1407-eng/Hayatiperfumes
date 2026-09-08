@@ -242,6 +242,19 @@
 }
 
 @media (max-width: 768px) {
+  .hero-bg-video {
+    object-fit: cover;
+    object-position: center 30%;
+    width: 100%;
+    height: 100%;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: brightness(0.94) contrast(1.12) saturate(1.25);
+  }
+  .hero-overlay {
+    background: 
+      radial-gradient(circle at 50% 40%, rgba(255, 240, 186, 0.1) 0%, rgba(200, 125, 85, 0.2) 50%, rgba(6, 7, 11, 0.6) 100%),
+      linear-gradient(180deg, rgba(6, 7, 11, 0.6) 0%, transparent 35%, transparent 65%, rgba(6, 7, 11, 0.8) 100%);
+  }
   .hero-frame {
     padding: 0 1.2rem;
   }

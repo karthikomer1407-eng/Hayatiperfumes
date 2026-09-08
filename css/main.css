@@ -133,6 +133,7 @@ body:hover .custom-cursor {
   background: linear-gradient(180deg, rgba(6,7,11,0.9) 0%, rgba(6,7,11,0) 100%);
   backdrop-filter: blur(8px);
   transition: padding 0.4s ease, background 0.4s ease;
+  gap: 30px;
 }
 
 .navbar.scrolled {

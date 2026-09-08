@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { Lock } from 'lucide-react';
 
-export function SideScrollingFooter() {
+export function SideScrollingFooter({ onOpenAdmin }) {
   const [dubaiTime, setDubaiTime] = useState('--:--:--');
   const [kochiTime, setKochiTime] = useState('--:--:--');
 
@@ -138,10 +139,30 @@ export function SideScrollingFooter() {
       </div>
 
       {/* Footer Bottom Bar */}
-      <div className="footer-bottom container">
+      <div className="footer-bottom container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <div className="footer-copy">
           &copy; 2026 HAYATI (حياتي) PARFUMS. All Rights Reserved. React Edition.
         </div>
+        <button
+          onClick={onOpenAdmin}
+          className="discreet-admin-link"
+          style={{
+            background: 'transparent',
+            border: 'none',
+            color: 'rgba(255, 255, 255, 0.25)',
+            fontSize: '0.75rem',
+            cursor: 'pointer',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.35rem',
+            transition: 'color 0.25s ease'
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--gold-primary)')}
+          onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255, 255, 255, 0.25)')}
+          title="Authorized Administrator Access (Ctrl+Shift+A)"
+        >
+          <Lock style={{ width: 12, height: 12 }} /> Admin Access
+        </button>
       </div>
 
     </footer>

@@ -87,8 +87,8 @@ export function HeroSection() {
       // Background video subtle parallax zoom (hardware accelerated)
       if (bgVideo) {
         tl.to(bgVideo, {
-          y: -40,
-          scale: 1.1,
+          y: isMobile ? -15 : -40,
+          scale: isMobile ? 1.02 : 1.1,
           duration: 1,
           ease: 'none'
         }, 0);
