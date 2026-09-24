@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { PERFUME_COLLECTION } from '../data/perfumeData';
 
-const STORAGE_KEY = 'hayati_perfume_products_v1';
+const STORAGE_KEY = 'hayati_perfume_products_v2';
 
 const ProductContext = createContext(null);
 
