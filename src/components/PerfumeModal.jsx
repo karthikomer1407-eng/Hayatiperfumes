@@ -1,8 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, ChevronUp, Heart, Gem, Sparkles, CheckCircle2 } from 'lucide-react';
 
 export function PerfumeModal({ perfume, onClose }) {
   const [activeTab, setActiveTab] = useState('inspired');
+
+  useEffect(() => {
+    if (perfume) {
+      document.title = `${perfume.title} (${perfume.arabicName}) | Hayati Haute Parfumerie`;
+    }
+    return () => {
+      document.title = 'Hayati (حياتي) | Luxury Arabian Oud & Malabar Botanical Perfumes';
+    };
+  }, [perfume]);
 
   if (!perfume) return null;
 

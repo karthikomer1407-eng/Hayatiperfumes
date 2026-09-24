@@ -34,19 +34,133 @@
 
   <!-- JSON-LD Structured Data Schema for Google Search Rich Snippets -->
   <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Hayati Perfumes",
-      "alternateName": "حياتي",
-      "url": "https://hayatiperfumes.com",
-      "description": "Award-winning luxury perfume house blending rare Arabian Oud alchemy with Kerala botanical heritage.",
-      "knowsAbout": ["Luxury Perfumes", "Arabian Oud", "Attar", "Botanical Extracts"],
-      "brand": {
-        "@type": "Brand",
-        "name": "Hayati"
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Hayati Perfumes",
+        "alternateName": ["حياتي", "Hayati Haute Parfumerie", "Hayati Oud"],
+        "url": "https://hayatiperfumes.com/"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Store",
+        "@id": "https://hayatiperfumes.com/#store",
+        "name": "Hayati Haute Parfumerie",
+        "alternateName": "حياتي للمجوهرات والعطور",
+        "url": "https://hayatiperfumes.com",
+        "description": "Award-winning luxury perfume house blending rare Arabian Oud alchemy with Kerala botanical heritage.",
+        "priceRange": "$$$",
+        "currenciesAccepted": "USD",
+        "brand": {
+          "@type": "Brand",
+          "name": "Hayati",
+          "logo": "https://hayatiperfumes.com/assets/images/oud_royal.png"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Hayati Royal Fragrance Collection",
+        "description": "Artisanal luxury perfumes inspired by iconic Middle Eastern attars and world-famous designer fragrances.",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@type": "Product",
+              "name": "Hayati Oud Al Malaki (Royal Oud)",
+              "description": "Royal artisanal interpretation of Tom Ford Oud Wood with 30-year-aged Cambodian agarwood.",
+              "brand": { "@type": "Brand", "name": "Hayati" },
+              "offers": {
+                "@type": "Offer",
+                "price": "165.00",
+                "priceCurrency": "USD",
+                "availability": "https://schema.org/InStock"
+              }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+              "@type": "Product",
+              "name": "Hayati Imperial Akoya Pearl",
+              "description": "Luminous oceanic-amber attar combining velvety white ambergris, sparkling cardamom, and sun-warmed cashmere wood.",
+              "brand": { "@type": "Brand", "name": "Hayati" },
+              "offers": {
+                "@type": "Offer",
+                "price": "168.00",
+                "priceCurrency": "USD",
+                "availability": "https://schema.org/InStock"
+              }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+              "@type": "Product",
+              "name": "Hayati Baccarat Crystal Saffron",
+              "description": "Airy, sweet-salty crystal cloud of golden saffron, luminous amberwood, and mineral ambergris inspired by MFK Baccarat Rouge 540.",
+              "brand": { "@type": "Brand", "name": "Hayati" },
+              "offers": {
+                "@type": "Offer",
+                "price": "188.00",
+                "priceCurrency": "USD",
+                "availability": "https://schema.org/InStock"
+              }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "item": {
+              "@type": "Product",
+              "name": "Hayati Erba Pura Royal Nectar",
+              "description": "Explosion of Sicilian citrus fruits and lush mango over an opulent, infinite cloud of white musk and amber inspired by Xerjoff Erba Pura.",
+              "brand": { "@type": "Brand", "name": "Hayati" },
+              "offers": {
+                "@type": "Offer",
+                "price": "195.00",
+                "priceCurrency": "USD",
+                "availability": "https://schema.org/InStock"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is Hayati Perfumes?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Hayati (حياتي) is an award-winning luxury perfume house combining rare Arabian Oud alchemy with Kerala botanical heritage, handcrafting pure Extrait de Parfum formulations."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How long do Hayati perfumes last on skin?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Hayati Extrait de Parfum compositions contain up to 35% to 40% pure fragrance oils, providing 24+ hours of longevity."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are Hayati perfumes inspired by designer fragrances?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, Hayati creates elevated royal interpretations of legendary perfumes including Tom Ford Oud Wood, MFK Baccarat Rouge 540, Gissah Akoya, and Xerjoff Erba Pura using higher oil concentrations and rare natural extracts."
+            }
+          }
+        ]
       }
-    }
+    ]
   </script>
 
   <!-- Google Fonts -->
